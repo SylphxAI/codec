@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "repo": "SylphxAI/codec",
+    "name": "SylphxAI Codec",
+    "lifecycle": "active",
+    "layer": "foundation",
+    "summary": "TypeScript/Bun monorepo for universal media codec, image-processing, and conversion packages, with optional WASM acceleration.",
+    "goals": [
+      "Provide core media codec and conversion packages for image, video, animation, audio, metadata, drawing, filtering, transforms, compositing, and CLI usage.",
+      "Maintain pure TypeScript codec implementations with optional WASM acceleration where the repository explicitly provides it.",
+      "Track codec coverage, tests, and remaining media-format work through repo-local package code and progress documentation."
+    ],
+    "nonGoals": [
+      "Own application-specific media workflows, storage products, CDN behavior, or user-facing media tools.",
+      "Own third-party codec patents, platform codec licensing, or external media-processing infrastructure.",
+      "Own enterprise engineering doctrine, standards, or project manifest schema."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "name": "codec-package-monorepo",
+        "description": "The core, codecs, CLI, processing, metadata, text, and optional WASM packages under packages/."
+      },
+      {
+        "name": "media-format-implementations",
+        "description": "Pure TypeScript media format decoders/encoders, tests, and progress tracking for supported image, video, animation, audio, and metadata formats."
+      }
+    ],
+    "doesNotOwn": [
+      "Application-specific media workflows, media storage, CDN behavior, UI products, or production deployment policy.",
+      "Third-party codec patent/licensing decisions or external media-processing infrastructure.",
+      "Enterprise doctrine and manifest schema owned by SylphxAI/doctrine."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "manifest",
+        "name": "Root package manifest and scripts",
+        "location": "package.json"
+      },
+      {
+        "type": "documentation",
+        "name": "Progress and coverage tracker",
+        "location": "PROGRESS.md"
+      },
+      {
+        "type": "package",
+        "name": "Core package",
+        "location": "packages/core/"
+      },
+      {
+        "type": "package",
+        "name": "Codec package",
+        "location": "packages/codecs/"
+      },
+      {
+        "type": "cli",
+        "name": "Codec CLI package",
+        "location": "packages/cli/"
+      },
+      {
+        "type": "package",
+        "name": "Processing packages",
+        "location": "packages/transform, packages/color, packages/filter, packages/composite, packages/draw, packages/histogram, packages/metadata, packages/text"
+      },
+      {
+        "type": "package",
+        "name": "Optional WASM package",
+        "location": "packages/wasm/"
+      },
+      {
+        "type": "workflow",
+        "name": "Release workflow",
+        "location": ".github/workflows/release.yml"
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "repo": "SylphxAI/doctrine",
+        "surface": "project manifest schema and engineering doctrine",
+        "direction": "peer-public"
+      },
+      {
+        "repo": "SylphxAI/.github",
+        "surface": "reusable release workflow",
+        "direction": "upstream-shared"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Do not encode a consuming product's media workflow, storage policy, or UI behavior into codec packages.",
+      "Do not imply patent/licensing clearance for complex media formats without a repo-owned decision and validation surface.",
+      "Do not fork doctrine standards into this repository."
+    ]
+  },
+  "documentation": {
+    "adr": {
+      "path": "docs/adr/",
+      "status": "planned"
+    },
+    "specs": {
+      "path": "PROGRESS.md",
+      "status": "present"
+    },
+    "catalog": {
+      "path": ".doctrine/project.json",
+      "status": "present"
+    },
+    "runbooks": {
+      "path": "docs/runbooks/",
+      "status": "planned"
+    },
+    "generatedReferences": {
+      "path": "PROGRESS.md",
+      "status": "present"
+    }
+  },
+  "delivery": {
+    "ciModel": "legacy-ci",
+    "requiredContexts": [],
+    "deployPath": "Main-branch Release workflow delegates to SylphxAI/.github reusable release workflow for package publication; no pull-request CI workflow is recorded.",
+    "productionProof": "Package tests, build for changed packages, codec fixture validation for affected formats, successful release workflow, and package-registry readback for published versions.",
+    "recoveryClass": "forward-fix-only"
+  },
+  "adoption": {
+    "status": "baseline",
+    "gaps": [
+      {
+        "id": "pr-ci-missing",
+        "description": "No pull_request or merge_group CI workflow is recorded; only the reusable main-branch release workflow exists.",
+        "owner": "SylphxAI/codec",
+        "target": "central ADR-29 required-context rollout or repo-local package validation gate"
+      },
+      {
+        "id": "readme-missing",
+        "description": "The repository has PROGRESS.md but no top-level README.md explaining the package set and consumer contract.",
+        "owner": "SylphxAI/codec",
+        "target": "next codec documentation pass"
+      },
+      {
+        "id": "codec-licensing-and-forward-fix",
+        "description": "Complex codec and WASM support can involve external licensing and published-package recovery concerns; record runbooks before production lifecycle promotion.",
+        "owner": "SylphxAI/codec",
+        "target": "before production lifecycle promotion"
+      }
+    ]
+  }
+}
