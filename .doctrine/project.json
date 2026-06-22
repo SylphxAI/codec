@@ -5,6 +5,7 @@
     "name": "SylphxAI Codec",
     "lifecycle": "active",
     "layer": "foundation",
+    "policyPool": "library-package",
     "summary": "TypeScript/Bun monorepo for universal media codec, image-processing, and conversion packages, with optional WASM acceleration.",
     "goals": [
       "Provide core media codec and conversion packages for image, video, animation, audio, metadata, drawing, filtering, transforms, compositing, and CLI usage.",
@@ -120,7 +121,17 @@
     "requiredContexts": [],
     "deployPath": "Main-branch Release workflow delegates to SylphxAI/.github reusable release workflow for package publication; no pull-request CI workflow is recorded.",
     "productionProof": "Package tests, build for changed packages, codec fixture validation for affected formats, successful release workflow, and package-registry readback for published versions.",
-    "recoveryClass": "forward-fix-only"
+    "recoveryClass": "forward-fix-only",
+    "deployable": false,
+    "packageRelease": {
+      "publishesPackages": true,
+      "ecosystems": ["npm"],
+      "releaseIntent": "Changesets in .changeset/ declare version and changelog intent for codec workspace package releases.",
+      "versionPr": "The release path must use a bot or GitHub App-owned Changesets version PR, with sylphx-release-bot as the default identity when installed.",
+      "publisher": "Protected GitHub Actions release workflow publishes through OIDC/trusted publishing where supported, with any npm token kept as a bounded fallback.",
+      "requiredContexts": ["release"],
+      "publishProof": "Release workflow success plus npm registry readback and provenance or attestation evidence for published codec package versions."
+    }
   },
   "adoption": {
     "status": "baseline",
