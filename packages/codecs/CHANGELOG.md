@@ -1,5 +1,11 @@
 # @sylphx/codec
 
+## 1.1.1
+
+### Patch Changes
+
+- 1801180: Forward-fix published package dependency metadata so internal workspace dependencies are materialized from the current workspace versions during npm publication.
+
 ## 1.1.0
 
 ### Minor Changes
