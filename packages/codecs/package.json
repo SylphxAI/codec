@@ -1,6 +1,6 @@
 {
 	"name": "@sylphx/codec",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "module",
 	"description": "Pure TypeScript media codecs - image, video, audio, subtitle",
 	"main": "./src/index.ts",

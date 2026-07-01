@@ -1,5 +1,12 @@
 # mconv
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [1801180]
+  - @sylphx/codec@1.1.1
+
 ## 0.0.2
 
 ### Patch Changes
