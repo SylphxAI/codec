@@ -19,7 +19,7 @@ concurrency:
 jobs:
   product:
     name: Build & Test
-    runs-on: sylphx-linux-standard
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
