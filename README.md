@@ -1,5 +1,9 @@
 # SylphxAI Codec
 
+> **Archived — no longer maintained (2026-09-24).** This repository is read-only.
+> The published `@sylphx/*` packages stay installable but receive no updates
+> or security fixes, and are marked deprecated on npm. There is no replacement.
+
 <p align="center">
   <img src="https://mark.sylphx.com/api/v1/banner?type=firefly&theme=tokyonight&text=codec&desc=TypeScript%2FBun+monorepo+for+universal+media+codec%2C+image-processing%2C+and+convers&height=200&animation=rise&credit=0" alt="codec — Sylphx Mark banner" width="100%" />
 </p>
